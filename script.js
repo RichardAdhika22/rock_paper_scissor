@@ -11,11 +11,6 @@ function getcomputerSelection(){
 }
 
 function playRound(playerSelection, computerSelection){
-
-    if ((playerSelection != "paper") && (playerSelection != "rock") && (playerSelection != "scissors")){
-        return ("Input is invalid");
-    }
-
     if (playerSelection == "paper"){
         if(computerSelection == "paper"){
             return("It's a tie! Both choose Paper");
@@ -51,31 +46,56 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-function game(){
-    let countWin=0, countLose=0;
-    for (let i=1; i<=5; i++){
-        let playerSelection = prompt("Enter your choice (" + i + "/5) : ");
-        let computerSelection = getcomputerSelection();
-
-        playerSelection.toLowerCase();
-        computerSelection.toLowerCase();
-
-        let result = playRound(playerSelection, computerSelection);
-
-        console.log(result);
-        countWin += (result.split("Win").length -1);
-        countLose += (result.split("Lose").length -1);
-    }
-
-    if(countWin > countLose) console.log("You Win!");
-    else if(countWin < countLose) console.log("You Lose!");
-    else console.log("It's draw");
+function game(playerSelection){
+    let computerSelection = getcomputerSelection();
+    return playRound(playerSelection, computerSelection);
 }
 
-// var computerSelection, result;
-// getcomputerSelection();
-// console.log(computerSelection);
+let playerScore = 0, computerScore = 0;
+let finished, result='';
 
-// console.log(playRound("rock", computerSelection));
-game();
-game();
+const choices = document.querySelectorAll('button');
+choices.forEach((choice) => {
+    choice.addEventListener('click', () => {
+        let roundResult = game(choice.id);
+
+        playerScore += (roundResult.split("Win").length -1);
+        computerScore += (roundResult.split("Lose").length -1);
+
+        if(playerScore == 5){
+            result = "Congratz, you win!";
+            finished = true;
+        }
+        else if(computerScore == 5){
+            result = "Awww, you lose!";
+            finished = true;
+        }
+
+        const body = document.querySelector('body');
+        const erase = document.querySelector('.score');
+
+        if(erase != null) body.removeChild(erase);
+ 
+        const displayScore = document.createElement('div');
+        displayScore.classList.add('score');
+        const displayPlayer = document.createElement('div');
+        displayPlayer.textContent = `Your Score = ${playerScore}`;
+        const displayComputer = document.createElement('div');
+        displayComputer.textContent = `Computer's Score = ${computerScore}`;
+
+        body.appendChild(displayScore);
+        displayScore.appendChild(displayPlayer);
+        displayScore.appendChild(displayComputer);
+
+        const finalResult = document.createElement('div');
+        if(finished) {
+            finalResult.textContent = result;
+            displayScore.appendChild(finalResult);
+
+            let buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                button.disabled = true;
+            })
+        }
+     });
+});
