@@ -1,0 +1,96 @@
+:root{
+    --primary-yellow: #fac650;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color:rgb(43, 176, 206);
+    margin: 50px;
+}
+
+.header {
+    font-size: 36px;
+    font-family: 'Monospace', cursive;
+    background-color: rgb(54, 23, 23);
+    color: var(--primary-yellow);
+    font-weight: bold;
+    padding: 20px;
+    letter-spacing: 3px;
+    height: 80px;
+    width: 100%;
+    margin: 0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 120px;
+}
+
+.description {
+    font-size: 24px;
+    color: black;
+    font-family: 'Courier';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.intro {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+input {
+    width: 150px;
+    height: 150px;
+    opacity: 80%;
+    border-radius: 10px;
+    padding-top: 120px;
+    color: black;
+}
+
+input#rock {
+    background-image: url('images/rock.png');
+    background-size: 110%;
+}
+
+input#paper {
+    background-image: url('images/paper.avif');
+    background-size: 110%;
+}
+
+input#scissors {
+    background-image: url('images/scissors.avif');
+    background-size: 90%;
+}
+
+#result {
+    font-size:26px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#battle {
+    display: flex;
+    justify-content: space-around;
+}

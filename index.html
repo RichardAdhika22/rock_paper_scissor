@@ -4,16 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock_paper_scissors</title>
+    <link rel="stylesheet" href="style.css">
 
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="buttons">
-        <li>
-            <ul><button id="rock">Rock</button></ul>
-            <ul><button id="paper">Paper</button></ul>
-            <ul><button id="scissors">Scissors</button></ul>
-        </li>
+    <div class="header">
+        Rock Paper Scissors
+    </div>
+    <div class="content">
+        <div class="description">
+            <div class="intro">A legendary battle of three world's strongest kingdoms is back! 🏹</div>
+            <div class="instruction">First score to 5 points win the game!</div>
+        </div>
+        <div class="buttons">
+            <li>
+                <ul>
+                    <input type="submit" id="rock" value="Rock">
+                </ul>
+                <ul>
+                    <input type="submit" id="paper" value="Paper">
+                </ul>
+                <ul>
+                    <input type="submit" id="scissors" value="Scissors">
+                </ul>
+            </li>
+        </div>
+        <div id="result">
+            <div id="resultMsg"></div>
+            <div id="battle">
+                <div id="player">
+                    <div id="player-choice" class="display-choice"></div>
+                    <div id="player-result"></div>
+                </div>
+                
+                <div id="computer">
+                    <div id="computer-choice" class="display-choice"></div>
+                    <div id="computer-result"></div>
+                </div>
+            </div>
+            <div id="final"></div>
+        </div>
     </div>
 </body>
 </html>
